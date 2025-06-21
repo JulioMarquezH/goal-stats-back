@@ -1,45 +1,58 @@
-⚽️ Football Stats Backend
 
+# ⚽️ Football Stats Backend
 
+![NestJS](https://img.shields.io/badge/-NestJS-E0234E?logo=nestjs&logoColor=white&style=flat-square)  
+![Prisma](https://img.shields.io/badge/-Prisma-2D3748?logo=prisma&logoColor=white&style=flat-square)  
+![MySQL](https://img.shields.io/badge/-MySQL-4479A1?logo=mysql&logoColor=white&style=flat-square)  
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
+---
 
-📋 Descripción
-Este es el backend de Football Stats, una API construida con NestJS + Prisma + MySQL 🚀.
+## 📋 Descripción
+
+Este es el backend de **Football Stats**, una API construida con **NestJS** + **Prisma** + **MySQL** 🚀.  
 Sirve como motor de datos para una página web que muestra estadísticas detalladas de futbolistas ⚽️📊.
 
-🛠️ Stack tecnológico
-⚙️ NestJS (Framework para Node.js)
+---
 
-🛢️ Prisma ORM
+## 🛠️ Stack tecnológico
 
-🐬 MySQL base de datos relacional
+- ⚙️ **NestJS** (Framework para Node.js)
+- 🛢️ **Prisma** ORM
+- 🐬 **MySQL** base de datos relacional
+- ✨ **Prettier** para formateo de código
+- 📝 **TypeScript**
 
-✨ Prettier para formateo de código
+---
 
-📝 TypeScript
+## 🚀 Scripts disponibles
 
-🚀 Scripts disponibles
-Script	Descripción
-npm run start	Arranca el servidor en modo producción
-npm run start:dev	Arranca en modo desarrollo con hot reload
-npm run build	Compila el proyecto a /dist
-npm run prisma:generate	Genera el cliente Prisma a partir del schema
-npm run prisma:migrate	Ejecuta las migraciones de la DB
-npm run format	Formatea el código con Prettier
+| Script               | Descripción                               |
+|----------------------|-------------------------------------------|
+| `npm run start`      | Arranca el servidor en modo producción     |
+| `npm run start:dev`  | Arranca en modo desarrollo con hot reload  |
+| `npm run build`      | Compila el proyecto a `/dist`              |
+| `npm run prisma:generate` | Genera el cliente Prisma a partir del schema |
+| `npm run prisma:migrate`  | Ejecuta las migraciones de la DB        |
+| `npm run format`     | Formatea el código con Prettier            |
 
-🗄️ Estructura del proyecto
-bash
-Copy
-Edit
+---
+
+## 🗄️ Estructura del proyecto
+
+```bash
 src/
 ├── modules/           # Módulos de la API (players, teams, matches, etc.)
 ├── prisma/            # Prisma schema & migraciones
 ├── main.ts            # Entry point
 test/                  # Tests (si los añades)
-⚡ Instalación rápida
-bash
-Copy
-Edit
+```
+
+---
+
+## ⚡ Instalación rápida
+
+```bash
 # 1️⃣ Clonar el repositorio
 git clone https://github.com/JulioMarquezH/goal-stats-back.git
 
@@ -53,30 +66,34 @@ npm run prisma:migrate
 
 # 5️⃣ Iniciar en modo desarrollo
 npm run start:dev
-📦 Variables de entorno
-Ejemplo .env:
+```
 
-env
-Copy
-Edit
+---
+
+## 📦 Variables de entorno
+
+Ejemplo `.env`:
+
+```env
 DATABASE_URL="mysql://user:password@localhost:3306/football_stats"
 PORT=3000
-✨ Roadmap
- API REST de jugadores
+```
 
- API REST de equipos
+---
 
- Integración con Prisma
+## ✨ Roadmap
 
- Conexión con MySQL
+- [x] API REST de jugadores
+- [x] API REST de equipos
+- [x] Integración con Prisma
+- [x] Conexión con MySQL
+- [ ] Autenticación y autorización 🔒
+- [ ] Implementación de tests
+- [ ] Deploy en producción
 
- Autenticación y autorización 🔒
+---
 
- Implementación de tests
+## 👨🏻‍💻 Autor
 
- Deploy en producción
-
-👨🏻‍💻 Autor
-Julio Marquez
-GitHub
-
+**Julio Marquez**  
+[GitHub](https://github.com/JulioMarquezH)
