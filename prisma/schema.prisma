@@ -1,0 +1,136 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model team {
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(255)
+  country     String?   @db.VarChar(100)
+  stadium     String?   @db.VarChar(255)
+  logo_url    String?   @db.VarChar(500)
+  players     player[]
+  homeMatches match[]   @relation("HomeTeamMatches")
+  awayMatches match[]   @relation("AwayTeamMatches")
+  player_match_stats player_match_stats[]
+  events      event[]
+  created_at  DateTime  @default(now())
+
+  @@map("teams")
+}
+
+model player {
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(255)
+  birth_date  DateTime? @db.Date
+  nationality String?   @db.VarChar(100)
+  position    String?   @db.VarChar(100)
+  height_cm   Int?
+  weight_kg   Int?
+  current_team_id Int?
+  current_team team?    @relation(fields: [current_team_id], references: [id])
+  shirt_number Int?
+  photo_url   String?   @db.VarChar(500)
+  debut_date  DateTime? @db.Date
+  player_match_stats player_match_stats[]
+  events      event[]
+  created_at  DateTime  @default(now())
+
+  @@map("players")
+}
+
+model season {
+  id         Int       @id @default(autoincrement())
+  start_year Int
+  end_year   Int
+  matches    match[]
+  created_at DateTime  @default(now())
+
+  @@map("seasons")
+}
+
+model match {
+  id           Int       @id @default(autoincrement())
+  match_date   DateTime  @db.Date
+  season_id    Int?
+  season       season?   @relation(fields: [season_id], references: [id])
+  matchday     Int?
+  home_team_id Int
+  away_team_id Int
+  home_team    team      @relation("HomeTeamMatches", fields: [home_team_id], references: [id])
+  away_team    team      @relation("AwayTeamMatches", fields: [away_team_id], references: [id])
+  home_score   Int       @default(0)
+  away_score   Int       @default(0)
+  stadium      String?   @db.VarChar(255)
+  match_type   match_type @default(league)
+  player_match_stats player_match_stats[]
+  events       event[]
+  created_at   DateTime  @default(now())
+
+  @@map("matches")
+}
+
+model player_match_stats {
+  id              Int      @id @default(autoincrement())
+  match_id        Int
+  player_id       Int
+  team_id         Int
+  minutes_played  Int      @default(0)
+  starter         Boolean  @default(true)
+  substituted     Boolean  @default(false)
+  yellow_cards    Int      @default(0)
+  red_cards       Int      @default(0)
+  match           match    @relation(fields: [match_id], references: [id])
+  player          player   @relation(fields: [player_id], references: [id])
+  team            team     @relation(fields: [team_id], references: [id])
+  created_at      DateTime @default(now())
+
+  @@map("player_match_stats")
+}
+
+model event {
+  id            Int        @id @default(autoincrement())
+  match_id      Int
+  player_id     Int
+  team_id       Int
+  event_type    event_type
+  event_minute  Int
+  event_second  Int
+  value         Json
+  match         match      @relation(fields: [match_id], references: [id])
+  player        player     @relation(fields: [player_id], references: [id])
+  team          team       @relation(fields: [team_id], references: [id])
+  created_at    DateTime   @default(now())
+
+  @@map("events")
+}
+
+enum match_type {
+  league
+  cup
+  friendly
+}
+
+enum event_type {
+  goal
+  own_goal
+  assist
+  pass_completed
+  pass_failed
+  interception
+  save
+  shot_on_target
+  shot_off_target
+  foul_committed
+  foul_suffered
+  yellow_card
+  red_card
+  offside
+  penalty_scored
+  penalty_missed
+  penalty_saved
+}

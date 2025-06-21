@@ -1,0 +1,32 @@
+{
+    "name": "football-stats-backend",
+    "version": "1.0.0",
+    "description": "Backend for Football Stats (NestJS + Prisma + MySQL)",
+    "main": "dist/main.js",
+    "scripts": {
+        "start": "nest start",
+        "start:dev": "nest start --watch",
+        "build": "nest build",
+        "prisma:generate": "prisma generate",
+        "prisma:migrate": "prisma migrate dev",
+        "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+    },
+    "dependencies": {
+        "@nestjs/common": "^10.0.0",
+        "@nestjs/config": "^3.0.0",
+        "@nestjs/core": "^10.0.0",
+        "@nestjs/platform-express": "^10.0.0",
+        "@prisma/client": "^5.22.0",
+        "mysql2": "^3.6.0",
+        "reflect-metadata": "^0.1.13",
+        "rxjs": "^7.8.0"
+    },
+    "devDependencies": {
+        "@nestjs/cli": "^10.0.0",
+        "@nestjs/schematics": "^10.0.0",
+        "@nestjs/testing": "^10.0.0",
+        "prettier": "^3.0.0",
+        "prisma": "^5.22.0",
+        "typescript": "^5.0.0"
+    }
+}
